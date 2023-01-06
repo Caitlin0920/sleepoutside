@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checkout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkout/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sleepoutside.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/backpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/backpacks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/sleeping-bags.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/sleeping-bags.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/tents.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/tents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +21,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="kate--individual1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -35,21 +37,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Pathway/2023_Winter/WDD330/sleepoutside",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "D:\\Pathway\\2023_Winter\\WDD330\\sleepoutside\\node_modules\\prettier",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Pathway/2023_Winter/WDD330/sleepoutside&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\Pathway\\2023_Winter\\WDD330\\sleepoutside\\node_modules\\prettier&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,7 +61,9 @@
       <option name="presentableId" value="Default" />
       <updated>1672859214837</updated>
       <workItem from="1672859223801" duration="595000" />
-      <workItem from="1672882224584" duration="3954000" />
+      <workItem from="1672882224584" duration="4036000" />
+      <workItem from="1673032529735" duration="724000" />
+      <workItem from="1673039774544" duration="2821000" />
     </task>
     <servers />
   </component>
@@ -71,7 +75,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/kate--individual1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
