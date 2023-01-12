@@ -5,23 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checkout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkout/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/ProductData.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductData.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/backpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/backpacks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/sleeping-bags.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/sleeping-bags.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/tents.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/json/tents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/utils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/utils.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,17 +30,20 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2JsG83oSK7M7YE5MscET8PgV6TW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Pathway/2023_Winter/WDD330/sleepoutside",
+    "last_opened_file_path": "D:/Pathway/2023_Winter/WDD330/sleepoutside/src/product_pages",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -50,6 +53,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Pathway\2023_Winter\WDD330\sleepoutside\src\product_pages" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,6 +68,8 @@
       <updated>1672859214837</updated>
       <workItem from="1672859223801" duration="595000" />
       <workItem from="1672882224584" duration="3954000" />
+      <workItem from="1673380044822" duration="480000" />
+      <workItem from="1673380589995" duration="16083000" />
     </task>
     <servers />
   </component>
