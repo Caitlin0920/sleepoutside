@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="">
+    <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="Team2 finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/ProductData.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductData.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/utils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/utils.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +65,16 @@
       <workItem from="1672859223801" duration="595000" />
       <workItem from="1672882224584" duration="3954000" />
       <workItem from="1673380044822" duration="480000" />
-      <workItem from="1673380589995" duration="16083000" />
+      <workItem from="1673380589995" duration="17044000" />
     </task>
+    <task id="LOCAL-00001" summary="Team2 finished">
+      <created>1673545104617</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673545104617</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,5 +90,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Team2 finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Team2 finished" />
   </component>
 </project>
