@@ -45,11 +45,3 @@ function productCardTemplate(product){
           </li>`;
 }
 
-function removeElement(list, index){
-  for(let i = 0; i < list.length; i++){
-    if (i === index){
-      list.splice(index, 1);
-    }
-  }
-}
-

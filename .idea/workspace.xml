@@ -6,28 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/banner-sm.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/banner-sm.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/banner.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/logos/marmot-160x100.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/logos/marmot-160x100.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noun_Backpack_2389275.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Backpack_2389275.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noun_Backpack_65884.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Backpack_65884.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noun_Tent_2517.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Tent_2517.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/utils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/utils.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/backpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/backpacks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/sleeping-bags.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/sleeping-bags.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/tents.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/tents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/ProductList.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductList.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +67,7 @@
       <workItem from="1673546557452" duration="15000" />
       <workItem from="1673546657176" duration="598000" />
       <workItem from="1673552240311" duration="612000" />
-      <workItem from="1673558297280" duration="10381000" />
+      <workItem from="1673558297280" duration="10909000" />
     </task>
     <servers />
   </component>
