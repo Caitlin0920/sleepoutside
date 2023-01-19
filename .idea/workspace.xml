@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="">
+    <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="added total amount">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/cart/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +67,19 @@
       <workItem from="1673546657176" duration="598000" />
       <workItem from="1673552240311" duration="612000" />
       <workItem from="1673558297280" duration="12368000" />
-      <workItem from="1673629444930" duration="832000" />
+      <workItem from="1673629444930" duration="920000" />
+      <workItem from="1673977994001" duration="22000" />
+      <workItem from="1673978025386" duration="916000" />
+      <workItem from="1674148038872" duration="382000" />
     </task>
+    <task id="LOCAL-00001" summary="added total amount">
+      <created>1673630355143</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673630355143</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,5 +95,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added total amount" />
+    <option name="LAST_COMMIT_MESSAGE" value="added total amount" />
   </component>
 </project>
