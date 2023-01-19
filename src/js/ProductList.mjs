@@ -45,5 +45,18 @@ export default class ProductList {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
+
+
+    // let newArray = [];
+    // let newArray = list.filter(this.dataSource, i => i <= 3)
+
+    // newArray.push(list[0])
+    // newArray.push(list[1])
+    // newArray.push(list[2])
+    // newArray.push(list[3])
+    // return list;
+    // console.log(newArray)
+
+
 }
 
