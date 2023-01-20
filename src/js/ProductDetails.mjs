@@ -45,7 +45,7 @@ function productDetailsTemplate(product){
                 alt="${product.NameWIthoutBrand}"
                 />
 
-                <p class="product-card__price">$${product.FinalPrice}</p>
+                <p class="product-card__price"><s>$${product.SuggestedRetailPrice}</s> $${product.FinalPrice} -${Math.round(100 - product.FinalPrice / product.SuggestedRetailPrice * 100)}%</p>
 
                 <p class="product__color">${product.Colors[0].ColorName}</p>
 
