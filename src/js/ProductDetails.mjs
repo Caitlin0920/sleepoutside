@@ -21,7 +21,14 @@ export default class ProductDetails{
         if (cart == null) {
           cart = [];
         }
-        cart.push(this.product);
+        // check for existing item in cart
+        const existingItem = cart.find((item) => item.Id === this.product.Id);
+        if (existingItem) {
+          existingItem.Quantity++;
+        }
+        else {
+          cart.push(this.product);
+        }
         setLocalStorage("so-cart", cart);
     }
     renderProductDetails(selector){

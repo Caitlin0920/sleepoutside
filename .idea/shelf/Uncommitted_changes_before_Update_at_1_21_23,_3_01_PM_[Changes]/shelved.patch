@@ -1,0 +1,125 @@
+Index: src/js/ProductDetails.mjs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { getLocalStorage, setLocalStorage} from \"./utils.mjs\";\n\nexport default class ProductDetails{\n    constructor(productId, dataSource){\n        this.productId = productId;\n        this.product = {};\n        this.dataSource = dataSource;\n    }\n    async init() {\n        // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it\n        this.product = await this.dataSource.findProductById(this.productId);\n        // once we have the product details we can render out the HTML\n        this.renderProductDetails(\"main\");\n        // once the HTML is rendered we can add a listener to Add to Cart button\n        // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.\n        document.getElementById('addToCart')\n                .addEventListener('click', this.addToCart.bind(this));\n    }\n    addToCart() {\n        let cart = getLocalStorage(\"so-cart\");\n        if (cart == null) {\n          cart = [];\n        }\n        cart.push(this.product);\n        setLocalStorage(\"so-cart\", cart);\n    }\n    renderProductDetails(selector){\n        const element = document.querySelector(selector);\n        element.insertAdjacentHTML(\n          \"afterBegin\",\n          productDetailsTemplate(this.product)\n        );\n    }\n}\n\nfunction productDetailsTemplate(product){\n    return `<section class=\"product-detail\">\n                <h3>${product.Name}</h3>\n\n                <h2 class=\"divider\">${product.NameWithoutBrand}</h2>\n\n                <img\n                class=\"divider\"\n                src=\"${product.Image}\"\n                alt=\"${product.NameWIthoutBrand}\"\n                />\n\n                <p class=\"product-card__price\">$${product.FinalPrice}</p>\n\n                <p class=\"product__color\">${product.Colors[0].ColorName}</p>\n\n                <p class=\"product__description\">\n                ${product.DescriptionHtmlSimple}\n                </p>\n\n                <div class=\"product-detail__add\">\n                <button id=\"addToCart\" data-id=\"${product.Id}\">Add to Cart</button>\n                </div>\n            </section>`;\n    }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/js/ProductDetails.mjs b/src/js/ProductDetails.mjs
+--- a/src/js/ProductDetails.mjs	(revision 4dc128ce4f03f650ee2263e3c950b5a4ca1f5922)
++++ b/src/js/ProductDetails.mjs	(date 1674338181359)
+@@ -21,7 +21,14 @@
+         if (cart == null) {
+           cart = [];
+         }
+-        cart.push(this.product);
++        // check for existing item in cart
++        const existingItem = cart.find((item) => item.Id === this.product.Id);
++        if (existingItem) {
++          existingItem.Quantity++;
++        }
++        else {
++          cart.push(this.product);
++        }
+         setLocalStorage("so-cart", cart);
+     }
+     renderProductDetails(selector){
+@@ -57,4 +64,4 @@
+                 <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+                 </div>
+             </section>`;
+-    }
+\ No newline at end of file
++    }
+Index: src/js/cart.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { getLocalStorage } from \"./utils.mjs\";\n\nfunction renderCartContents() {\n  const cartItems = getLocalStorage(\"so-cart\");\n  if (cartItems) {\n    const htmlItems = cartItems.map((item) => cartItemTemplate(item));\n    document.querySelector(\".product-list\").innerHTML = htmlItems.join(\"\");\n  } else {\n    document.querySelector(\".product-list\").innerHTML = \"Empty\";\n  }\n}\n\nfunction cartItemTemplate(item) {\n  const newItem = `<li class=\"cart-card divider\">\n  <a href=\"#\" class=\"cart-card__image\">\n    <img\n      src=\"${item.Image}\"\n      alt=\"${item.Name}\"\n    />\n  </a>\n  <a href=\"#\">\n    <h2 class=\"card__name\">${item.Name}</h2>\n  </a>\n  <p class=\"cart-card__color\">${item.Colors[0].ColorName}</p>\n  <p class=\"cart-card__quantity\">qty: 1</p>\n  <p class=\"cart-card__price\">$${item.FinalPrice}</p>\n</li>`;\n\n  return newItem;\n}\n\nrenderCartContents();\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/js/cart.js b/src/js/cart.js
+--- a/src/js/cart.js	(revision 4dc128ce4f03f650ee2263e3c950b5a4ca1f5922)
++++ b/src/js/cart.js	(date 1674338142721)
+@@ -22,7 +22,7 @@
+     <h2 class="card__name">${item.Name}</h2>
+   </a>
+   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+-  <p class="cart-card__quantity">qty: 1</p>
++  <p class="cart-card__quantity">${item.Quantity}</p>
+   <p class="cart-card__price">$${item.FinalPrice}</p>
+ </li>`;
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"463c73d3-69c1-49f4-906e-a7ad53271264\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2JsG83oSK7M7YE5MscET8PgV6TW\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;D:/Pathway/2023_Winter/WDD330/sleepoutside&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\\\Pathway\\\\2023_Winter\\\\WDD330\\\\sleepoutside\\\\node_modules\\\\prettier&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"463c73d3-69c1-49f4-906e-a7ad53271264\" name=\"Changes\" comment=\"\" />\n      <created>1672859214837</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1672859214837</updated>\n      <workItem from=\"1672859223801\" duration=\"595000\" />\n      <workItem from=\"1672882224584\" duration=\"3954000\" />\n      <workItem from=\"1673546189430\" duration=\"363000\" />\n      <workItem from=\"1673546557452\" duration=\"15000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4dc128ce4f03f650ee2263e3c950b5a4ca1f5922)
++++ b/.idea/workspace.xml	(date 1674338381331)
+@@ -6,6 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/js/ProductDetails.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductDetails.mjs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -13,6 +15,11 @@
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="bp--individual2" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -31,6 +38,7 @@
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+     &quot;last_opened_file_path&quot;: &quot;D:/Pathway/2023_Winter/WDD330/sleepoutside&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+@@ -41,6 +49,23 @@
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
++  <component name="RunManager">
++    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
++      <package-json value="$PROJECT_DIR$/package.json" />
++      <command value="run" />
++      <scripts>
++        <script value="start" />
++      </scripts>
++      <node-interpreter value="project" />
++      <envs />
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="npm.start" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -53,6 +78,9 @@
+       <workItem from="1672882224584" duration="3954000" />
+       <workItem from="1673546189430" duration="363000" />
+       <workItem from="1673546557452" duration="15000" />
++      <workItem from="1673903738032" duration="545000" />
++      <workItem from="1674006518591" duration="4109000" />
++      <workItem from="1674172370347" duration="1977000" />
+     </task>
+     <servers />
+   </component>
