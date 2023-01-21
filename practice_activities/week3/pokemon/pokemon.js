@@ -2,28 +2,28 @@ const url = "https://pokeapi.co/api/v2/pokemon/";
 
 let getresults = null;
 async function getPokemon(url) {
-    const response = await fetch(url);
-    if (response.ok) {
-        const data = await response.json();
-        dostuff(data);
-    }
+  const response = await fetch(url);
+  if (response.ok) {
+    const data = await response.json();
+    dostuff(data);
+  }
 }
 function dostuff(data) {
-    getresults = data;
-    console.log("first:", getresults);
-    pokemonDropDown.innerHTML = `<select><option>Choose a Pokemon</option>`
+  getresults = data;
+  console.log("first:", getresults);
+  pokemonDropDown.innerHTML = `<select><option>Choose a Pokemon</option>`;
 
-    getresults.results.forEach((pokemon) => {
-        pokemonDropDown.innerHTML += `<option value="${pokemon.name}">${pokemon.name}</option>`
-        // console.log("third", pokemon.name)
-    });
-    pokemonDropDown.innerHTML += `</select>`;
-    // addEventListener("select", pokemon.name) = getresults.results.url;
-    // document.addEventListener("select", pokemonselection);
+  getresults.results.forEach((pokemon) => {
+    pokemonDropDown.innerHTML += `<option value="${pokemon.name}">${pokemon.name}</option>`;
+    // console.log("third", pokemon.name)
+  });
+  pokemonDropDown.innerHTML += `</select>`;
+  // addEventListener("select", pokemon.name) = getresults.results.url;
+  // document.addEventListener("select", pokemonselection);
 
-    // function pokemonselection() {
-    //     document.getElementById("div").innerHTML = `<a>${pokemon.url}</a>`;
-    // }
+  // function pokemonselection() {
+  //     document.getElementById("div").innerHTML = `<a>${pokemon.url}</a>`;
+  // }
 }
 
 getPokemon(url);
