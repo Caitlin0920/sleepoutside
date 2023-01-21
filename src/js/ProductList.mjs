@@ -1,6 +1,6 @@
 // This purpose of this script will be to
 // generate a list of product cards in HTML from an array.
-import {renderListWithTemplate} from "./utils.mjs";
+import { renderListWithTemplate } from "./utils.mjs";
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -10,15 +10,20 @@ export default class ProductList {
     this.dataSource = dataSource;
     this.listElement = listElement;
   }
-  async init(){
+  async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     this.removeElement(list, 2);
     this.removeElement(list, 3);
+
+    //set the title to the current category
+    document.querySelector(".title").innerHTML = this.category;
+
     // render the list
     this.renderList(list);
   }
-  renderList(list){
+
+  renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list)
     // const htmlStrings = list.map(productCardTemplate);
     // this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
@@ -32,11 +37,12 @@ export default class ProductList {
   }
 }
 
-function productCardTemplate(product){
+function productCardTemplate(product) {
   return `<li class="product-card">
             <a href="product_pages/index.html?product=${product.Id}">
             <img
-              src="${product.Image}"
+              src="${product.PrimaryMedium}"
+              
               alt="Image of ${product.Name}"
             />
             <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -44,4 +50,5 @@ function productCardTemplate(product){
             <p class="product-card__price">$${product.FinalPrice}</p></a>
           </li>`;
 }
+
 

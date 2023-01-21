@@ -22,7 +22,7 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParams(param) {
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
@@ -56,7 +56,7 @@ async function loadTemplate(path) {
 //   renderWithTemplate(fetch("./public/partials/footer.html").text(), document.getElementById("main-footer"));
 
 
-export async function loadHeaderFooter() {
+export default async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("../partials/header.html");
   const headerElement = document.querySelector("#main-header");
   const footerTemplate = await loadTemplate("../partials/footer.html");

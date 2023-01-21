@@ -1,7 +1,7 @@
-import { getLocalStorage, setLocalStorage} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
-export default class ProductDetails{
-    constructor(productId, dataSource){
+export default class ProductDetails {
+    constructor(productId, dataSource) {
         this.productId = productId;
         this.product = {};
         this.dataSource = dataSource;
@@ -14,26 +14,26 @@ export default class ProductDetails{
         // once the HTML is rendered we can add a listener to Add to Cart button
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
         document.getElementById('addToCart')
-                .addEventListener('click', this.addToCart.bind(this));
+            .addEventListener('click', this.addToCart.bind(this));
     }
     addToCart() {
         let cart = getLocalStorage("so-cart");
         if (cart == null) {
-          cart = [];
+            cart = [];
         }
         cart.push(this.product);
         setLocalStorage("so-cart", cart);
     }
-    renderProductDetails(selector){
+    renderProductDetails(selector) {
         const element = document.querySelector(selector);
         element.insertAdjacentHTML(
-          "afterBegin",
-          productDetailsTemplate(this.product)
+            "afterBegin",
+            productDetailsTemplate(this.product)
         );
     }
 }
 
-function productDetailsTemplate(product){
+function productDetailsTemplate(product) {
     return `<section class="product-detail">
                 <h3>${product.Name}</h3>
 
@@ -41,7 +41,7 @@ function productDetailsTemplate(product){
 
                 <img
                 class="divider"
-                src="${product.Image}"
+                src="${product.PrimaryLarge}"
                 alt="${product.NameWIthoutBrand}"
                 />
 
@@ -57,4 +57,4 @@ function productDetailsTemplate(product){
                 <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
                 </div>
             </section>`;
-    }
+}
