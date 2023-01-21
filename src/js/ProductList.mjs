@@ -13,8 +13,10 @@ export default class ProductList {
   async init(){
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData(this.category);
-    this.removeElement(list, 2);
-    this.removeElement(list, 3);
+    if (this.category === "tents") {
+      this.removeElement(list, 2);
+      this.removeElement(list, 3);
+    }
     // render the list
     this.renderList(list);
 
