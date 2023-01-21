@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="updated">
+    <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="Cart quantities">
       <change afterPath="$PROJECT_DIR$/src/js/ProductList.mjs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/js/checkout.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/public/partials/footer.html" afterDir="false" />
@@ -26,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/utils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/utils.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/json/backpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/backpacks.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/json/sleeping-bags.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/sleeping-bags.json" afterDir="false" />
@@ -91,6 +92,14 @@
       <workItem from="1674232115688" duration="206000" />
       <workItem from="1674232326045" duration="233000" />
     </task>
+    <task id="LOCAL-00001" summary="Cart quantities">
+      <created>1674327610705</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674327610705</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,5 +115,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cart quantities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart quantities" />
   </component>
 </project>
