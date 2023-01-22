@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -24,7 +24,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p>qty:<input type="number" class="cart-card__quantity" value="1" min="1"></p>
+  <p>qty:<input type="number" class="cart-card__quantity" value="${item.Quantity}" min="1"></p>
   <p>$<span class="cart-card__price">${item.FinalPrice}</span></p>
 </li>`;
 
@@ -42,11 +42,15 @@ function calculateTotal(cartItems) {
     itemPrice[i].setAttribute("id", `price${i}`);
     const itemQty = document.getElementById(`qty${i}`);
     const singleItemPrice = parseFloat(cartItems[i].FinalPrice);
-    totalPrice += singleItemPrice;
+    var itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
+    totalPrice += itemTotalPrice;
 
     const itemTotalPriceTag = document.getElementById(`price${i}`);
+    itemTotalPriceTag.innerHTML = itemTotalPrice.toString();
     itemQty.addEventListener("change", () => {
-      const itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
+      cartItems[i].Quantity = itemQty.value;
+      setLocalStorage("so-cart", cartItems);
+      itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
       itemTotalPriceTag.innerHTML = itemTotalPrice.toString();
 
       totalPrice = 0;
@@ -58,6 +62,7 @@ function calculateTotal(cartItems) {
       }
     });
   }
+
   totalPriceTag.innerHTML = `Total: ${totalPrice.toString()}`;
   totalPrice = 0;
 }

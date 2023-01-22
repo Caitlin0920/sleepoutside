@@ -1,0 +1,184 @@
+Index: src/js/ProductDetails.mjs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { getLocalStorage, setLocalStorage} from \"./utils.mjs\";\n\nexport default class ProductDetails{\n    constructor(productId, dataSource){\n        this.productId = productId;\n        this.product = {};\n        this.dataSource = dataSource;\n    }\n    async init() {\n        // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it\n        this.product = await this.dataSource.findProductById(this.productId);\n        // once we have the product details we can render out the HTML\n        this.renderProductDetails(\"main\");\n        // once the HTML is rendered we can add a listener to Add to Cart button\n        // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.\n        document.getElementById('addToCart')\n                .addEventListener('click', this.addToCart.bind(this));\n    }\n    addToCart() {\n        let cart = getLocalStorage(\"so-cart\");\n        if (cart == null) {\n          cart = [];\n        }\n        cart.push(this.product);\n        setLocalStorage(\"so-cart\", cart);\n    }\n    renderProductDetails(selector){\n        const element = document.querySelector(selector);\n        element.insertAdjacentHTML(\n          \"afterBegin\",\n          productDetailsTemplate(this.product)\n        );\n    }\n}\n\nfunction productDetailsTemplate(product){\n    return `<section class=\"product-detail\">\n                <h3>${product.Name}</h3>\n\n                <h2 class=\"divider\">${product.NameWithoutBrand}</h2>\n\n                <img\n                class=\"divider\"\n                src=\"${product.Image}\"\n                alt=\"${product.NameWIthoutBrand}\"\n                />\n\n                <p class=\"product-card__price\">$${product.FinalPrice}</p>\n\n                <p class=\"product__color\">${product.Colors[0].ColorName}</p>\n\n                <p class=\"product__description\">\n                ${product.DescriptionHtmlSimple}\n                </p>\n\n                <div class=\"product-detail__add\">\n                <button id=\"addToCart\" data-id=\"${product.Id}\">Add to Cart</button>\n                </div>\n            </section>`;\n    }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/js/ProductDetails.mjs b/src/js/ProductDetails.mjs
+--- a/src/js/ProductDetails.mjs	(revision 3dc45fba795cc515119721f4ac088163a72133bd)
++++ b/src/js/ProductDetails.mjs	(date 1674338498700)
+@@ -21,7 +21,14 @@
+         if (cart == null) {
+           cart = [];
+         }
+-        cart.push(this.product);
++        // check for existing item in cart
++        const existingItem = cart.find((item) => item.Id === this.product.Id);
++        if (existingItem) {
++          existingItem.Quantity++;
++        }
++        else {
++          cart.push(this.product);
++        }
+         setLocalStorage("so-cart", cart);
+     }
+     renderProductDetails(selector){
+@@ -57,4 +64,4 @@
+                 <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+                 </div>
+             </section>`;
+-    }
+\ No newline at end of file
++    }
+Index: src/js/cart.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { getLocalStorage } from \"./utils.mjs\";\n\nfunction renderCartContents() {\n  const cartItems = getLocalStorage(\"so-cart\");\n  if (cartItems) {\n    const htmlItems = cartItems.map((item) => cartItemTemplate(item));\n    document.querySelector(\".product-list\").innerHTML = htmlItems.join(\"\");\n    calculateTotal(cartItems);\n    document.querySelector(\".cart-footer\").style.display = \"block\";\n  } else {\n    document.querySelector(\".product-list\").innerHTML = \"Empty\";\n  }\n}\n\nfunction cartItemTemplate(item) {\n  const newItem = `<li class=\"cart-card divider\">\n  <a href=\"#\" class=\"cart-card__image\">\n    <img\n      src=\"${item.Image}\"\n      alt=\"${item.Name}\"\n    />\n  </a>\n  <a href=\"#\">\n    <h2 class=\"card__name\">${item.Name}</h2>\n  </a>\n  <p class=\"cart-card__color\">${item.Colors[0].ColorName}</p>\n  <p>qty:<input type=\"number\" class=\"cart-card__quantity\" value=\"1\" min=\"1\"></p>\n  <p>$<span class=\"cart-card__price\">${item.FinalPrice}</span></p>\n</li>`;\n\n  return newItem;\n}\n\nfunction calculateTotal(cartItems) {\n  const qty = document.getElementsByClassName(\"cart-card__quantity\");\n  const itemPrice = document.getElementsByClassName(\"cart-card__price\");\n  let totalPrice = 0;\n  const totalPriceTag = document.querySelector(\".cart-total\");\n\n  for (let i = 0; i < cartItems.length; i++) {\n    qty[i].setAttribute(\"id\", `qty${i}`);\n    itemPrice[i].setAttribute(\"id\", `price${i}`);\n    const itemQty = document.getElementById(`qty${i}`);\n    const singleItemPrice = parseFloat(cartItems[i].FinalPrice);\n    totalPrice += singleItemPrice;\n\n    const itemTotalPriceTag = document.getElementById(`price${i}`);\n    itemQty.addEventListener(\"change\", () => {\n      const itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;\n      itemTotalPriceTag.innerHTML = itemTotalPrice.toString();\n\n      totalPrice = 0;\n      for (let j = 0; j < cartItems.length; j++) {\n        totalPrice += parseFloat(\n          document.getElementById(`price${j}`).innerText\n        );\n        totalPriceTag.innerHTML = `Total: ${totalPrice.toString()}`;\n      }\n    });\n  }\n  totalPriceTag.innerHTML = `Total: ${totalPrice.toString()}`;\n  totalPrice = 0;\n}\n\nrenderCartContents();\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/js/cart.js b/src/js/cart.js
+--- a/src/js/cart.js	(revision 3dc45fba795cc515119721f4ac088163a72133bd)
++++ b/src/js/cart.js	(date 1674338575611)
+@@ -5,8 +5,6 @@
+   if (cartItems) {
+     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+-    calculateTotal(cartItems);
+-    document.querySelector(".cart-footer").style.display = "block";
+   } else {
+     document.querySelector(".product-list").innerHTML = "Empty";
+   }
+@@ -24,42 +22,11 @@
+     <h2 class="card__name">${item.Name}</h2>
+   </a>
+   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+-  <p>qty:<input type="number" class="cart-card__quantity" value="1" min="1"></p>
+-  <p>$<span class="cart-card__price">${item.FinalPrice}</span></p>
++  <p class="cart-card__quantity">${item.Quantity}</p>
++  <p class="cart-card__price">$${item.FinalPrice}</p>
+ </li>`;
+ 
+   return newItem;
+ }
+ 
+-function calculateTotal(cartItems) {
+-  const qty = document.getElementsByClassName("cart-card__quantity");
+-  const itemPrice = document.getElementsByClassName("cart-card__price");
+-  let totalPrice = 0;
+-  const totalPriceTag = document.querySelector(".cart-total");
+-
+-  for (let i = 0; i < cartItems.length; i++) {
+-    qty[i].setAttribute("id", `qty${i}`);
+-    itemPrice[i].setAttribute("id", `price${i}`);
+-    const itemQty = document.getElementById(`qty${i}`);
+-    const singleItemPrice = parseFloat(cartItems[i].FinalPrice);
+-    totalPrice += singleItemPrice;
+-
+-    const itemTotalPriceTag = document.getElementById(`price${i}`);
+-    itemQty.addEventListener("change", () => {
+-      const itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
+-      itemTotalPriceTag.innerHTML = itemTotalPrice.toString();
+-
+-      totalPrice = 0;
+-      for (let j = 0; j < cartItems.length; j++) {
+-        totalPrice += parseFloat(
+-          document.getElementById(`price${j}`).innerText
+-        );
+-        totalPriceTag.innerHTML = `Total: ${totalPrice.toString()}`;
+-      }
+-    });
+-  }
+-  totalPriceTag.innerHTML = `Total: ${totalPrice.toString()}`;
+-  totalPrice = 0;
+-}
+-
+ renderCartContents();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"463c73d3-69c1-49f4-906e-a7ad53271264\" name=\"Changes\" comment=\"Cart quantities\">\n      <change afterPath=\"$PROJECT_DIR$/src/js/ProductList.mjs\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/js/checkout.js\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/public/partials/footer.html\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/public/partials/header.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/cart/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/cart/index.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/checkout/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/checkout/index.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/banner-sm.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/banner-sm.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/banner.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/banner.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/logos/marmot-160x100.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/logos/marmot-160x100.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/noun_Backpack_2389275.svg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/noun_Backpack_2389275.svg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/noun_Backpack_65884.svg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/noun_Backpack_65884.svg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/noun_Tent_2517.svg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/noun_Tent_2517.svg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/index.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/js/cart.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/js/cart.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/js/main.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/js/main.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/js/product.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/js/product.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/js/utils.mjs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/js/utils.mjs\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/json/backpacks.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/json/backpacks.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/json/sleeping-bags.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/json/sleeping-bags.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/json/tents.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/public/json/tents.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/product_pages/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/product_pages/index.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/product_pages/northface-alpine-3.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/product_pages/northface-alpine-3.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/product_pages/northface-talus-4.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/product_pages/northface-talus-4.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/vite.config.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/vite.config.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2JsG83oSK7M7YE5MscET8PgV6TW\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;D:/Pathway/2023_Winter/WDD330/sleepoutside&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\\\Pathway\\\\2023_Winter\\\\WDD330\\\\sleepoutside\\\\node_modules\\\\prettier&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"463c73d3-69c1-49f4-906e-a7ad53271264\" name=\"Changes\" comment=\"\" />\n      <created>1672859214837</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1672859214837</updated>\n      <workItem from=\"1672859223801\" duration=\"595000\" />\n      <workItem from=\"1672882224584\" duration=\"3954000\" />\n      <workItem from=\"1673546189430\" duration=\"363000\" />\n      <workItem from=\"1673546557452\" duration=\"15000\" />\n      <workItem from=\"1674232115688\" duration=\"206000\" />\n      <workItem from=\"1674232326045\" duration=\"233000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Cart quantities\">\n      <created>1674327610705</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1674327610705</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Cart quantities\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Cart quantities\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3dc45fba795cc515119721f4ac088163a72133bd)
++++ b/.idea/workspace.xml	(date 1674338707677)
+@@ -5,38 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="Cart quantities">
+-      <change afterPath="$PROJECT_DIR$/src/js/ProductList.mjs" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/js/checkout.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/public/partials/footer.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/public/partials/header.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/cart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/cart/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/checkout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkout/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/banner-sm.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/banner-sm.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/banner.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/logos/marmot-160x100.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/logos/marmot-160x100.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/noun_Backpack_2389275.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Backpack_2389275.svg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/noun_Backpack_65884.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Backpack_65884.svg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/noun_Tent_2517.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Tent_2517.svg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/js/ProductDetails.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductDetails.mjs" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/js/utils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/utils.mjs" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/json/backpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/backpacks.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/json/sleeping-bags.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/sleeping-bags.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/json/tents.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/tents.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/product_pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -62,21 +33,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;D:/Pathway/2023_Winter/WDD330/sleepoutside&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\Pathway\\2023_Winter\\WDD330\\sleepoutside\\node_modules\\prettier&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "dart.analysis.tool.window.visible": "false",
++    "last_opened_file_path": "D:/Pathway/2023_Winter/WDD330/sleepoutside",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "prettierjs.PrettierConfiguration.Package": "D:\\Pathway\\2023_Winter\\WDD330\\sleepoutside\\node_modules\\prettier",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
