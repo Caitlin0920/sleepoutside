@@ -13,8 +13,8 @@ export default class ProductDetails{
         this.renderProductDetails("main");
         // once the HTML is rendered we can add a listener to Add to Cart button
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
-        document.getElementById('addToCart')
-                .addEventListener('click', this.addToCart.bind(this));
+        document.getElementById("addToCart")
+                .addEventListener("click", this.addToCart.bind(this));
     }
     addToCart() {
         let cart = getLocalStorage("so-cart");
@@ -49,11 +49,11 @@ function productDetailsTemplate(product){
 
                 <img
                 class="divider"
-                src="${product.Image}"
+                src="${product.Images.PrimaryLarge}"
                 alt="${product.NameWIthoutBrand}"
                 />
 
-                <p class="product-card__price">$${product.FinalPrice}</p>
+                <p class="product-card__price"><s>$${product.SuggestedRetailPrice}</s> $${product.FinalPrice} -${Math.round(100 - product.FinalPrice / product.SuggestedRetailPrice * 100)}%</p>
 
                 <p class="product__color">${product.Colors[0].ColorName}</p>
 

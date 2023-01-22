@@ -138,13 +138,11 @@ button {
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
-  border: 1px solid var(--light-grey);
   max-width: 250px;
 }
-.product-card h2,
-.product-card h3,
-.product-card p {
-  margin: 0.5em 0;
+.product-card h2 {
+  margin: 0 auto;
+  width: fit-content;
 }
 
 .card__brand {
