@@ -27,6 +27,9 @@ body {
 
 img {
   max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header {
@@ -85,7 +88,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -219,6 +222,7 @@ button {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
+  width: 60%;
 }
 
 .cart-card__price {
@@ -263,4 +267,16 @@ footer {
 
 .title {
   text-transform: capitalize;
+}
+
+.quantity-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
 }
