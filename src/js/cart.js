@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -42,14 +42,15 @@ function calculateTotal(cartItems) {
     itemPrice[i].setAttribute("id", `price${i}`);
     const itemQty = document.getElementById(`qty${i}`);
     const singleItemPrice = parseFloat(cartItems[i].FinalPrice);
-    totalPrice += singleItemPrice;
+    var itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
+    totalPrice += itemTotalPrice;
 
     const itemTotalPriceTag = document.getElementById(`price${i}`);
+    itemTotalPriceTag.innerHTML = itemTotalPrice.toString();
     itemQty.addEventListener("change", () => {
-      console.log(cartItems[i]);
       cartItems[i].Quantity = itemQty.value;
-      console.log(cartItems[i].Quantity);
-      const itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
+      setLocalStorage("so-cart", cartItems);
+      itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
       itemTotalPriceTag.innerHTML = itemTotalPrice.toString();
 
       totalPrice = 0;
@@ -61,6 +62,7 @@ function calculateTotal(cartItems) {
       }
     });
   }
+
   totalPriceTag.innerHTML = `Total: ${totalPrice.toString()}`;
   totalPrice = 0;
 }
