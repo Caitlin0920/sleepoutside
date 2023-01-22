@@ -24,7 +24,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">${item.Quantity}</p>
+  <p>qty:<input type="number" class="cart-card__quantity" value="${item.Quantity}" min="1"></p>
   <p>$<span class="cart-card__price">${item.FinalPrice}</span></p>
 </li>`;
 
@@ -46,6 +46,9 @@ function calculateTotal(cartItems) {
 
     const itemTotalPriceTag = document.getElementById(`price${i}`);
     itemQty.addEventListener("change", () => {
+      console.log(cartItems[i]);
+      cartItems[i].Quantity = itemQty.value;
+      console.log(cartItems[i].Quantity);
       const itemTotalPrice = parseInt(itemQty.value) * singleItemPrice;
       itemTotalPriceTag.innerHTML = itemTotalPrice.toString();
 

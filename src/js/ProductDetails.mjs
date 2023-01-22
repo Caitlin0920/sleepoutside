@@ -27,6 +27,7 @@ export default class ProductDetails{
           existingItem.Quantity++;
         }
         else {
+          this.product.Quantity = 1
           cart.push(this.product);
         }
         setLocalStorage("so-cart", cart);
