@@ -5,37 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="Cart quantities">
-      <change afterPath="$PROJECT_DIR$/src/js/ProductList.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/js/checkout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/public/partials/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/public/partials/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/cart/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/checkout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/checkout/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/banner-sm.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/banner-sm.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/banner.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/logos/marmot-160x100.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/logos/marmot-160x100.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noun_Backpack_2389275.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Backpack_2389275.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noun_Backpack_65884.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Backpack_65884.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/noun_Tent_2517.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/noun_Tent_2517.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/ProductData.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductData.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/ProductDetails.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductDetails.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/ProductList.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductList.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/utils.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/utils.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/backpacks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/backpacks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/sleeping-bags.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/sleeping-bags.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/json/tents.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/json/tents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/cedar-ridge-rimrock-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/marmot-ajax-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-alpine-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/product_pages/northface-talus-4.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,22 +38,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "D:/Pathway/2023_Winter/WDD330/sleepoutside",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "D:\\Pathway\\2023_Winter\\WDD330\\sleepoutside\\node_modules\\prettier",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Pathway/2023_Winter/WDD330/sleepoutside&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\Pathway\\2023_Winter\\WDD330\\sleepoutside\\node_modules\\prettier&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -92,6 +68,7 @@
       <workItem from="1673546557452" duration="15000" />
       <workItem from="1674232115688" duration="206000" />
       <workItem from="1674232326045" duration="233000" />
+      <workItem from="1674351703145" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="Cart quantities">
       <created>1674327610705</created>
