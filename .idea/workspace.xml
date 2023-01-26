@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="463c73d3-69c1-49f4-906e-a7ad53271264" name="Changes" comment="Cart quantities">
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/ProductData.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductData.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/ProductDetails.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductDetails.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/ProductList.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/ProductList.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +62,8 @@
       <workItem from="1674232115688" duration="206000" />
       <workItem from="1674232326045" duration="233000" />
       <workItem from="1674351703145" duration="8000" />
+      <workItem from="1674687714792" duration="629000" />
+      <workItem from="1674753388568" duration="1078000" />
     </task>
     <task id="LOCAL-00001" summary="Cart quantities">
       <created>1674327610705</created>
