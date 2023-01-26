@@ -50,7 +50,7 @@ export default class checkoutProcess {
 		this.totalItems = this.list.length;
 		this.orderSummary();
 
-		document.getElementById("submit").addEventListener("click", this.checkout)
+		document.getElementById("order-button").addEventListener("click", this.checkout)
 	}
 
 	orderSummary() {
@@ -58,56 +58,31 @@ export default class checkoutProcess {
 			this.itemTotal += this.list[i].FinalPrice;
 		}
 
-		document.getElementById("subtotal").innerHTML = this.itemTotal.toFixed(2);
+		document.getElementById("subtotal").innerHTML = "$" + this.itemTotal.toFixed(2);
 
 		document.getElementById("zip").addEventListener("change", () => {
 			this.shipping = 10 + (this.totalItems - 1) * 2;
 			this.tax = Math.round(this.itemTotal * 0.06 * 100) / 100;
 			this.orderTotal = this.itemTotal + this.shipping + this.tax;
 
-			document.getElementById("shipping").innerHTML = this.shipping.toFixed(2);
-			document.getElementById("tax").innerHTML = this.tax.toFixed(2);
-			document.getElementById("total").innerHTML = this.orderTotal.toFixed(2);
+			document.getElementById("shipping").innerHTML = "$" + this.shipping.toFixed(2);
+			document.getElementById("tax").innerHTML = "$" + this.tax.toFixed(2);
+			document.getElementById("total").innerHTML = "$" + this.orderTotal.toFixed(2);
 		})
 	}
 
 	async checkout() {
 		event.preventDefault()
 		const formElement = document.forms["checkout"];
+		const date = new Date;
 		
 		// build the data object from the calculated fields, the items in the cart, and the information entered into the form
-		// const order = formDataToJSON(formElement);
-		// order.orderDate = new Date;
-		// order.items = packageItems(this.list, this.totalItems);
-		// order.orderTotal = this.orderTotal;
-		// order.shipping = this.shipping;
-		// order.tax = this.tax;
-		const order = {
-			orderDate: "2021-01-27T18:18:26.095Z",
-			fname: "John",
-			lname: "Doe",
-			street: "123 Main",
-			city: "Rexburg",
-			state: "ID",
-			zip: "83440",
-			cardNumber: "1234123412341234",
-			expiration: "8/21",
-			code: "123",
-			items: [{
-			  id: "20CXG",
-			  name: "The North Face Pivoter 27 L Backpack",
-			  price: 39.99,
-			  quantity: 1
-			}, {
-			  id: "14GVF",
-			  name: "Marmot 5°F Rampart Down Sleeping Bag - 650 Fill, Mummy (For Men and Women)",
-			  price: 229.99,
-			  quantity: 1
-			}],
-			orderTotal: "298.18",
-			shipping: 12,
-			tax: "16.20"
-		}
+		const order = formDataToJSON(formElement);
+		order.orderDate = date.toISOString();
+		order.items = packageItems(this.list, this.totalItems);
+		order.orderTotal = "298.18"; // this.orderTotal;
+		order.shipping = 12; // this.shipping;
+		order.tax = "16.20"; // this.tax;
 
 		console.log(order)
 
