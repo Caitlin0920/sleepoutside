@@ -24,23 +24,23 @@
           <li>Tax: $<span id="tax"></span></li>
           <li>Order Total: $<span id="total"></span></li>
         </ul>
-        <form>
+        <form name="checkout">
           <fieldset>
             <label for="fName">First Name:</label><br>
-            <input type="text" name="fName" required><br>
+            <input type="text" name="fName" id="fName" required><br>
 
             <label for="lName">Last Name:</label><br>
-            <input type="text" name="lName" required>
+            <input type="text" name="lName" id="lName" required>
           </fieldset>
           <fieldset>
             <label for="address">Street Address:</label><br>
-            <input type="text" name="address" required><br>
+            <input type="text" name="address" id="address" required><br>
 
             <label for="city">City:</label><br>
-            <input type="text" name="city" required><br>
+            <input type="text" name="city" id="city" required><br>
 
             <label for="state">State:</label><br>
-            <input type="text" name="state" required><br>
+            <input type="text" name="state" id="state" required><br>
 
             <label for="zip">Zip Code:</label><br>
             <input type="number" name="zip" id="zip" required>
@@ -48,16 +48,16 @@
 
           <fieldset>
             <label for="cardNumber">Credit Card Number:</label><br>
-            <input type="number" name="cardNumber" required><br>
+            <input type="number" name="cardNumber" id="cardNumber" required><br>
 
             <label for="expire">Expiration Date:</label><br>
-            <input type="date" name="expire" required><br>
+            <input type="date" name="expire" id="expire" required><br>
 
-            <label for="securityCode">Security Code:</label><br>
-            <input type="number" name="securityCode" required>
+            <label for="code">Security Code:</label><br>
+            <input type="number" name="code" id="code" required>
           </fieldset>
 
-          <input type="submit" value="Buy!">
+          <input type="submit" value="Buy!" id="submit">
         </form>
       </section>
     </main>
