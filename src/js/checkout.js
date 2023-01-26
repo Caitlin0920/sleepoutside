@@ -8,9 +8,9 @@ myCheckout.init();
 
 document
   .getElementById("zip")
-  .addEventListener("blur", myCheckout.orderSummary.bind(myCheckout));
+  .addEventListener("change", myCheckout.calculateTotal.bind(myCheckout));
 // listening for click on the button
 document.getElementById("order-button").addEventListener("click", (event) => {
   event.preventDefault();
-  myCheckout.calculateTotal();
+  myCheckout.checkout();
 });
