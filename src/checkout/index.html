@@ -18,46 +18,63 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <ul>
-          <li>Subtotal: $<span id="subtotal"></span></li>
-          <li>Shipping Estimate: $<span id="shipping"></span></li>
-          <li>Tax: $<span id="tax"></span></li>
-          <li>Order Total: $<span id="total"></span></li>
-        </ul>
-        <form name="checkout">
+        <form name="checkout" id="order-form">
           <fieldset>
-            <label for="fName">First Name:</label><br>
-            <input type="text" name="fName" id="fName" required><br>
+            <legend>Full Name</legend>
+            <label for="fname">First Name:</label><br />
+            <input type="text" name="fname" id="fname" required /><br />
 
-            <label for="lName">Last Name:</label><br>
-            <input type="text" name="lName" id="lName" required>
+            <label for="lname">Last Name:</label><br />
+            <input type="text" name="lname" id="lname" required />
           </fieldset>
           <fieldset>
-            <label for="address">Street Address:</label><br>
-            <input type="text" name="address" id="address" required><br>
+            <legend>Shipping & Billing Address</legend>
+            <label for="street">Street Address:</label><br />
+            <input type="text" name="street" id="street" required /><br />
 
-            <label for="city">City:</label><br>
-            <input type="text" name="city" id="city" required><br>
+            <label for="city">City:</label><br />
+            <input type="text" name="city" id="city" required /><br />
 
-            <label for="state">State:</label><br>
-            <input type="text" name="state" id="state" required><br>
+            <label for="state">State:</label><br />
+            <input type="text" name="state" id="state" required /><br />
 
-            <label for="zip">Zip Code:</label><br>
-            <input type="number" name="zip" id="zip" required>
+            <label for="zip">Zip Code:</label><br />
+            <input type="number" name="zip" id="zip" required />
           </fieldset>
 
           <fieldset>
-            <label for="cardNumber">Credit Card Number:</label><br>
-            <input type="number" name="cardNumber" id="cardNumber" required><br>
+            <legend>Credit Card Info</legend>
+            <label for="cardNumber">Credit Card Number:</label><br />
+            <input
+              type="number"
+              name="cardNumber"
+              id="cardNumber"
+              required
+            /><br />
 
-            <label for="expire">Expiration Date:</label><br>
-            <input type="date" name="expire" id="expire" required><br>
+            <label for="expiration">Expiration Date:</label><br />
+            <input
+              type="date"
+              name="expiration"
+              id="expiration"
+              required
+            /><br />
 
-            <label for="code">Security Code:</label><br>
-            <input type="number" name="code" id="code" required>
+            <label for="code">Security Code:</label><br />
+            <input type="number" name="code" id="code" required />
           </fieldset>
 
-          <input type="submit" value="Buy!" id="submit">
+          <fieldset id="order-summary">
+            <legend>Order Summary</legend>
+            <ul>
+              <li>Subtotal: <span id="subtotal"></span></li>
+              <li>Shipping Estimate: <span id="shipping"></span></li>
+              <li>Tax: <span id="tax"></span></li>
+              <li>Order Total: <span id="total"></span></li>
+            </ul>
+          </fieldset>
+
+          <input type="submit" value="Buy!" id="order-button" />
         </form>
       </section>
     </main>

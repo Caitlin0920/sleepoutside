@@ -200,6 +200,47 @@ button {
   grid-column: 3;
 }
 
+.cart-footer {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+}
+
+#cart-order {
+  grid-column: 2/3;
+  margin: 13px 5px 0 auto;
+}
+
+#order-button {
+  padding: 8px 12px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#order-button:hover {
+  cursor: pointer;
+}
+
+#order-form fieldset {
+  margin-bottom: 10px;
+  border-radius: 7px;
+}
+
+#order-form legend {
+  margin-bottom: 10px;
+  font-size: 16pt;
+}
+
+#order-form input {
+  width: 100%;
+  height: 36px;
+  font-size: 14pt;
+  border-radius: 7px;
+}
+
+#order-form #order-summary ul {
+  margin-top: 0;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
