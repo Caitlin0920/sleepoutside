@@ -72,10 +72,17 @@ export default class checkoutProcess {
 	}
 
 	async checkout() {
-		event.preventDefault()
+		document.querySelector('#order-button').addEventListener('click', (e) => {
+			e.preventDefault();
+			const myForm = document.forms[0];
+			const chk_status = myForm.checkValidity();
+			myForm.reportValidity();
+			if (chk_status)
+				myCheckout.checkout();
+		});
 		const formElement = document.forms["checkout"];
 		const date = new Date;
-		
+
 		// build the data object from the calculated fields, the items in the cart, and the information entered into the form
 		const order = formDataToJSON(formElement);
 		order.orderDate = date.toISOString();
@@ -90,7 +97,16 @@ export default class checkoutProcess {
 		try {
 			const res = await services.checkout(order);
 			console.log(res);
+			setLocalStorage("so-cart", []);
+			location.assign("/checkout/success.html");
+
 		} catch (err) {
+			// get rid of any preexisting alerts.
+			removeAllAlerts();
+			for (let message in err.message) {
+				alertMessage(err.message[message]);
+
+			}
 			console.log(err);
 		}
 	}
