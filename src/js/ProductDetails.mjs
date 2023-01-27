@@ -15,6 +15,9 @@ export default class ProductDetails{
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
         document.getElementById("addToCart")
                 .addEventListener("click", this.addToCart.bind(this));
+        //commnets' eventlistener        
+        document.getElementById("commentBtn")
+                .addEventListener("click", this.createComments.bind(this));
     }
     addToCart() {
         let cart = getLocalStorage("so-cart");
@@ -39,8 +42,15 @@ export default class ProductDetails{
           productDetailsTemplate(this.product)
         );
     }
-}
-
+    createComments(){
+      this.product.Comments = document.getElementById("comment").value;
+      let commentPlace = document.getElementById("comments");
+      commentPlace.insertAdjacentHTML(
+        "afterBegin",
+        commentDetailsTemplate(document.getElementById("comment").value)
+        );
+    }
+}    
 function productDetailsTemplate(product){
     return `<section class="product-detail">
                 <h3>${product.Name}</h3>
@@ -64,5 +74,20 @@ function productDetailsTemplate(product){
                 <div class="product-detail__add">
                 <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
                 </div>
-            </section>`;
+            </section>
+            <div class="product-detail">
+              <h2>Comment</h2>
+              <textarea id="comment" rows="5" cols="60"></textarea>
+              <button id="commentBtn">Add Comment</button>
+              <div id="comments"></div>
+            <div>`;
     }
+
+function commentDetailsTemplate(comment){
+  console.log(comment)
+  const currentTime = new Date;
+  const template = `<p><strong>${comment}</strong></p>
+                    <p>${currentTime}</p>
+                    <hr>`;
+  return template
+}
