@@ -220,6 +220,27 @@ button {
   cursor: pointer;
 }
 
+.alert {
+  width: 100%;
+  max-width: 500px;
+  margin: 5px auto;
+  padding: 0 10px;
+  border: 1px solid black;
+  font-size: 16pt;
+  display: grid;
+  grid-template-columns: auto 15px;
+  background-color: #f8ac6c;
+}
+
+.alert p {
+  width: 90%;
+}
+
+.alert span {
+  margin-left: auto;
+  text-align: right;
+}
+
 #order-form fieldset {
   margin-bottom: 10px;
   border-radius: 7px;
