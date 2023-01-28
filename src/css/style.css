@@ -164,6 +164,18 @@ button {
   width: 100%;
 }
 
+.alert {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #de7d22;
+  background-color: #f0a868;
+}
+.alert p{
+  margin: 0;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
