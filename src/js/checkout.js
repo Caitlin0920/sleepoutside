@@ -15,7 +15,6 @@ if(zip != null && cart != null){
   // listening for click on the button
   document.getElementById("order-button").addEventListener("click", (event) => {
     event.preventDefault();
-    
     const checkValidation = document.forms[0].checkValidity();
     document.forms[0].reportValidity();
     console.log(document.forms[0].checkValidity())
@@ -23,7 +22,7 @@ if(zip != null && cart != null){
       myCheckout.checkout();
     }
   });
-}else if(zip != null && cart === null){
+}else if(cart === null){
   location.assign("/cart/index.html");
 }
 

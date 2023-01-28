@@ -96,9 +96,10 @@ export default class CheckoutProcess {
 			location.assign("/checkout/success.html");
 		} catch (err) {
 			console.log(err);
-			removeAllAlerts();
+			//removeAllAlerts();
 			for (let message in err.message) {
-				alertMessage(message);
+				console.log(err.message[message])
+				alertMessage(err.message[message]);
 			  }
 			console.log(err);
 		}
