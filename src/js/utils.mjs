@@ -22,7 +22,7 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParams(param) {
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
@@ -64,4 +64,25 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+}
+
+
+export function alertMessage(message, scroll = true) {
+  // create element to hold our alert
+  const alert = document.createElement("div");
+  // add a class to style the alert - adds the class alert to the variable alert
+  alert.classList.add("alert");
+
+  alert.innerHTML = `${message}<button onclick="removeAlert()">X</button>`;
+  alert.addEventListener("click", function (e) {
+    if (e.target.tagName === "BUTTON" || e.target.innerText === "X") {
+      main.removeChild(this);
+    }
+  })
+
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }

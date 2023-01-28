@@ -1,10 +1,10 @@
 import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
-import { loadHeaderFooter, getParams } from "./utils.mjs";
+import { loadHeaderFooter, getParam } from "./utils.mjs";
 
 loadHeaderFooter();
 
-const category = getParams("category");
+const category = getParam("category");
 // first create an instance of our ProductData class.
 const dataSource = new ExternalServices();
 // then get the element we want the product list to render in
