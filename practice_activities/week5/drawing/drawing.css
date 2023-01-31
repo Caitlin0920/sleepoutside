@@ -1,0 +1,15 @@
+body {
+    background-color: aquamarine;
+    color: black;
+}
+
+canvas {
+    background-color: red;
+    color: black;
+    font-size: 1px;
+    border: 1px solid black;
+}
+
+#tutorial {
+    color: black;
+}
